@@ -12,17 +12,17 @@ class LegalNoticeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('content', TextareaType::class, array(
+            ->add('content', TextareaType::class, [
                 'label' => 'content',
-                'translation_domain' => 'forms',
-            ))
+                'translation_domain' => 'messages',
+            ])
         ;
     }
     
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'App\Entity\LegalNotice'
-        ));
+        ]);
     }
 }

@@ -3,5 +3,5 @@
 
 {% block body %}
     {{ legal.content|raw }}
-    <a href="{{ path('_legal_notice_edit', {'id': legal.id}) }}" class="btn btn-warning">{{ 'edit'|trans }}</a>
+    <a href="{{ path('_legal_notice_edit', {'id': legal.id}) }}" class="btn btn-warning">{{ 'edit'|trans({}, 'messages', legal.language) }}</a>
 {% endblock %}

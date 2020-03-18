@@ -1,0 +1,9 @@
+header img {
+    height: 50px;
+    padding: 10px;
+    width: 140px;
+}
+
+header span {
+    color: #999;
+}
