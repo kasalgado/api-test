@@ -45,13 +45,13 @@ class LegalNoticeController extends AbstractController
             $em->persist($legal);
             $em->flush();
             
-            return $this->redirect($this->generateUrl('_legal_notice'));
+            return $this->redirect($this->generateUrl('_legal_notice', ['language' => $legal->getLanguage()]));
         }
         
         return [
             'form' => $form->createView(),
-            'id' => $id,
             'language' => $legal->getLanguage(),
+            'id' => $id,
         ];
     }
 }
