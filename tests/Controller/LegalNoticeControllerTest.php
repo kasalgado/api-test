@@ -7,7 +7,7 @@ class LegalNoticeControllerTest extends WebTestCase
     public function testCanGetResponseFromIndex()
     {
         $client = static::createClient();        
-        $client->request('GET', '/legal-notice');
+        $client->request('GET', '/de/legal-notice');
         
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }

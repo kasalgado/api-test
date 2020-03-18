@@ -13,17 +13,18 @@ use App\Form\Type\LegalNoticeType;
 class LegalNoticeController extends AbstractController
 {
     /**
-     * @Route("/", name="_legal_notice")
-     * @Route("/{language}/legal-notice", name="_legal_notice", requirements={"language"="de|en"})
+     * @Route("/{language}/legal-notice", name="_legal_notice", requirements={"language"="de|en|es"})
      * @Template()
      */
     public function index(string $language): array
     {
-        $legal = $this->getDoctrine()->getRepository(LegalNotice::class)->find($id);
+        $legal = $this->getDoctrine()->getRepository(LegalNotice::class)->findOneBy([
+            'language' => $language,
+        ]);
         
         return [
             'legal' => $legal,
-            'id' => $id,
+            'id' => $legal->getId(),
         ];
     }
     
@@ -50,6 +51,7 @@ class LegalNoticeController extends AbstractController
         return [
             'form' => $form->createView(),
             'id' => $id,
+            'language' => $legal->getLanguage(),
         ];
     }
 }

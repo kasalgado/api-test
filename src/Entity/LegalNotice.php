@@ -26,6 +26,11 @@ class LegalNotice
      */
     private $updated_at;
 
+    /**
+     * @ORM\Column(type="string", length=2)
+     */
+    private $language;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +56,18 @@ class LegalNotice
     public function setUpdatedAt(\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getLanguage(): ?string
+    {
+        return $this->language;
+    }
+
+    public function setLanguage(string $language): self
+    {
+        $this->language = $language;
 
         return $this;
     }

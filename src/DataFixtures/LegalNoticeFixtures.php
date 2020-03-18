@@ -13,8 +13,21 @@ class LegalNoticeFixtures extends Fixture
         $datetime = new \DateTime();
         
         $legal = new LegalNotice();
-        $legal->setContent('<h1>Legal Notice</h1>');
+        $legal->setContent('<h1>Imprint</h1>');
         $legal->setUpdatedAt($datetime);
+        $legal->setLanguage('en');
+        $manager->persist($legal);
+        
+        $legal = new LegalNotice();
+        $legal->setContent('<h1>Impressum</h1>');
+        $legal->setUpdatedAt($datetime);
+        $legal->setLanguage('de');
+        $manager->persist($legal);
+        
+        $legal = new LegalNotice();
+        $legal->setContent('<h1>Sobre nosotros</h1>');
+        $legal->setUpdatedAt($datetime);
+        $legal->setLanguage('es');
         $manager->persist($legal);
         
         $manager->flush();

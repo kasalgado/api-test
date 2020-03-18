@@ -11,7 +11,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button class="btn btn-success" type="submit">{{ 'save'|trans }}</button>
-                    <a href="{{ path('_legal_notice') }}" class="btn btn-warning">{{ 'cancel'|trans }}</a>
+                    <a href="{{ path('_legal_notice', {'language': language}) }}" class="btn btn-warning">{{ 'cancel'|trans }}</a>
                 </div>
             </div>
         {{ form_end(form) }}
