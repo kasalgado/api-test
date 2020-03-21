@@ -7,4 +7,7 @@ After cloning the repository, run the following commands:
 - php bin/console doctrine:migrations:migrate
 - php bin/console doctrine:fixtures:load
 
+Do not forget to run the Unittest:
+- php bin/phpunit
+
 Enjoy it!
