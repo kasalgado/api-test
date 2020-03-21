@@ -31,14 +31,22 @@ class UserDataTest extends TestCase
         $this->assertEquals($expected, $this->userData->provider()->getMainData(0));
     }
     
-    public function testCanIterateUserData()
+    public function testCanGetAllUsersData()
     {
-        $expected = ['Leanne Graham', 'Ervin Howell'];
+        $expectedNameUser1 = 'Leanne Graham';
+        $expectedNameUser2 = 'Ervin Howell';
+        $expectedStreetUser1 = 'Kulas Light';
+        $expectedStreetUser2 = 'Victor Plains';
+        $expectedCompanyNameUser1 = 'Romaguera-Crona';
+        $expectedCompanyNameUser2 = 'Deckow-Crist';
+        $users = $this->userData->getUsers();
         
-        foreach ($this->userData->provider()->asArray() as $index => $data) {
-            $mainData = $this->userData->provider()->getMainData($index);
-            $this->assertEquals($expected[$index], $mainData['name']);
-        }
+        $this->assertEquals($expectedNameUser1, $users[0]['user']->getName());
+        $this->assertEquals($expectedNameUser2, $users[1]['user']->getName());
+        $this->assertEquals($expectedStreetUser1, $users[0]['address']->getStreet());
+        $this->assertEquals($expectedStreetUser2, $users[1]['address']->getStreet());
+        $this->assertEquals($expectedCompanyNameUser1, $users[0]['company']->getName());
+        $this->assertEquals($expectedCompanyNameUser2, $users[1]['company']->getName());
     }
     
     public function testCanGetDataFromUser()

@@ -10,6 +10,7 @@ use App\Lib\Company;
 class UserData
 {
     private $provider;
+    private $users = [];
     
     public static function createFromProvider(DataProvider $provider): self
     {
@@ -24,6 +25,17 @@ class UserData
     public function provider(): DataProvider
     {
         return $this->provider;
+    }
+    
+    public function getUsers(): array
+    {
+        foreach ($this->provider->asArray() as $index => $value) {
+            $this->users[$index]['user'] = $this->getUser($index);
+            $this->users[$index]['address'] = $this->getAddress($index);
+            $this->users[$index]['company'] = $this->getCompany($index);
+        }
+        
+        return $this->users;
     }
     
     public function getUser(int $index): User
