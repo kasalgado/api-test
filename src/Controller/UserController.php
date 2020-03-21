@@ -19,7 +19,6 @@ class UserController extends AbstractController
      */
     public function index(Request $request): array
     {
-        $data = [];
         $apiUrl = 'https://jsonplaceholder.typicode.com/users';
         $client = ApiRequest::open($apiUrl);
         $provider = DataProvider::createFromJson($client->getBody());
