@@ -53,7 +53,7 @@ class UserDataTest extends TestCase
     {
         $expectedName = 'Leanne Graham';
         $expectedEmail = 'Sincere@april.biz';
-        $user = $this->userData->getUser(0);
+        $user = $this->userData->getMainData(0);
         
         $this->assertEquals($expectedName, $user->getName());
         $this->assertEquals($expectedEmail, $user->getEmail());
@@ -63,7 +63,7 @@ class UserDataTest extends TestCase
     {
         $expectedStreet = 'Kulas Light';
         $expectedGeo = ['lat' => '-37.3159', 'lng' => '81.1496'];
-        $address = $this->userData->getAddress(0);
+        $address = $this->userData->getAddressData(0);
         
         $this->assertEquals($expectedStreet, $address->getStreet());
         $this->assertEquals($expectedGeo, $address->getGeo());
@@ -73,7 +73,7 @@ class UserDataTest extends TestCase
     {
         $expectedName = 'Romaguera-Crona';
         $expectedBs = 'harness real-time e-markets';
-        $company = $this->userData->getCompany(0);
+        $company = $this->userData->getCompanyData(0);
         
         $this->assertEquals($expectedName, $company->getName());
         $this->assertEquals($expectedBs, $company->getBs());

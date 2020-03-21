@@ -11,11 +11,11 @@
       </trans-unit>
       <trans-unit id="FX3KkuQ" resname="save">
         <source>save</source>
-        <target>__save</target>
+        <target>Guardar</target>
       </trans-unit>
       <trans-unit id="I3TZF5S" resname="cancel">
         <source>cancel</source>
-        <target>__cancel</target>
+        <target>Cancelar</target>
       </trans-unit>
     </body>
   </file>

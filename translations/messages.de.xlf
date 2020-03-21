@@ -15,11 +15,15 @@
       </trans-unit>
       <trans-unit id="I3TZF5S" resname="cancel">
         <source>cancel</source>
-        <target>__cancel</target>
+        <target>Abbrechen</target>
       </trans-unit>
-      <trans-unit id="F5SI3TZ" resname="content">
+      <trans-unit id="7XACtDn" resname="content">
         <source>content</source>
         <target>Inhalt</target>
+      </trans-unit>
+      <trans-unit id="wvyiqjq" resname="copyright">
+        <source>copyright</source>
+        <target>Copyright KASalgado 2020</target>
       </trans-unit>
     </body>
   </file>

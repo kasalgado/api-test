@@ -1,5 +1,9 @@
 {% extends '/base.html.twig' %}
 {% block title %}{{ 'title'|trans({}, 'legal_notice') }}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="../css/main.css" />
+{% endblock %}
 
 {% block body %}
     {{ legal.content|raw }}

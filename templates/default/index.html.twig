@@ -2,24 +2,24 @@
 {% block title %}{{ 'title'|trans({}, 'common') }}{% endblock %}
 
 {% block body %}
-    <div class="panel-group">
-        <div class="panel panel-info">
-            <div class="panel-heading">Aufgabe 1</div>
-            <div class="panel-body">
-                <p>Setze eine Symfony Applikation (ab Version 4) auf. In der Applikation soll es 3 Portale geben:</p>
-                <ul>
-                    <li>DE</li>
-                    <li>EN</li>
-                    <li>ES</li>
-                </ul>
-                <p>Jedes Portal hat eine Impressum-Seite (z.B. localhost/de/impressum oder localhost/en/imprint). Unter diesem Link wird nur der Inhalt zur jeweils passenden Sprache ausgegeben. Es soll eine Pflegemöglichkeit geschaffen werden, in welcher das Impressum für jeweils das Portal angelegt bzw. geändert werden kann.</p>
-            </div>
+    <div class="card">
+        <div class="card-header font-weight-bold">Aufgabe 1</div>
+        <div class="card-body">
+            <p>Setze eine Symfony Applikation (ab Version 4) auf. In der Applikation soll es 3 Portale geben:</p>
+            <ul>
+                <li>DE</li>
+                <li>EN</li>
+                <li>ES</li>
+            </ul>
+            <p>Jedes Portal hat eine Impressum-Seite (z.B. localhost/de/impressum oder localhost/en/imprint). Unter diesem Link wird nur der Inhalt zur jeweils passenden Sprache ausgegeben. Es soll eine Pflegemöglichkeit geschaffen werden, in welcher das Impressum für jeweils das Portal angelegt bzw. geändert werden kann.</p>
+            <a class="btn btn-primary" href="{{ path('_legal_notice', {'language': 'de'}) }}">Zu der Aufgabe</a>
         </div>
     </div>
-    <div class="panel panel-info">
-        <div class="panel-heading">Aufgabe 2</div>
-        <div class="panel-body">
+    <div class="card mt-2">
+        <div class="card-header font-weight-bold">Aufgabe 2</div>
+        <div class="card-body">
             <p>In die bestehende Symfony-Applikation soll nun eine User-Übersicht eingebaut werden. Diese soll über localhost/users aufrufbar sein. Beim Aufruf werden die User über einen Service von einer API abgerufen <a href="https://jsonplaceholder.typicode.com/users" target="_blank">https://jsonplaceholder.typicode.com/users</a>. Für den Abruf der Daten kann Guzzle verwendet werden.</p>
+            <a class="btn btn-primary" href="{{ path('_user') }}">Zu der Aufgabe</a>
         </div>
     </div>
 {% endblock %}

@@ -7,7 +7,7 @@
     <body>
       <trans-unit id="qvIyBkY" resname="title">
         <source>title</source>
-        <target>__title</target>
+        <target>Prueba backend</target>
       </trans-unit>
     </body>
   </file>

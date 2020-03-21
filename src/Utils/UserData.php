@@ -30,15 +30,15 @@ class UserData
     public function getUsers(): array
     {
         foreach ($this->provider->asArray() as $index => $value) {
-            $this->users[$index]['user'] = $this->getUser($index);
-            $this->users[$index]['address'] = $this->getAddress($index);
-            $this->users[$index]['company'] = $this->getCompany($index);
+            $this->users[$index]['user'] = $this->getMainData($index);
+            $this->users[$index]['address'] = $this->getAddressData($index);
+            $this->users[$index]['company'] = $this->getCompanyData($index);
         }
         
         return $this->users;
     }
     
-    public function getUser(int $index): User
+    public function getMainData(int $index): User
     {
         $userData = $this->provider->getMainData($index);
         
@@ -52,7 +52,7 @@ class UserData
         );
     }
     
-    public function getAddress(int $index): Address
+    public function getAddressData(int $index): Address
     {
         $addressData = $this->provider->getAddressData($index);
         
@@ -65,7 +65,7 @@ class UserData
         );
     }
     
-    public function getCompany(int $index): Company
+    public function getCompanyData(int $index): Company
     {
         $companyData = $this->provider->getCompanyData($index);
         

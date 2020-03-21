@@ -2,7 +2,44 @@
 {% block title %}{{ 'title'|trans({}, 'common') }}{% endblock %}
 
 {% block body %}
-    {% for row in data %}
-        <div>{{ row.user.id }} | {{ row.user.name }} | {{ row.address.street }}</div>
-    {% endfor %}
+    <div class="container">
+        <div class="row bg-dark text-white">
+            <div class="col-1 d-none d-sm-block">{{ 'id'|trans({}, 'common') }}</div>
+            <div class="col-3">{{ 'name'|trans({}, 'common') }}</div>
+            <div class="col-2 d-none d-sm-block">{{ 'username'|trans({}, 'common') }}</div>
+            <div class="col-3">{{ 'email'|trans({}, 'common') }}</div>
+            <div class="col-2 d-none d-sm-block">{{ 'website'|trans({}, 'common') }}</div>
+            <div class="col-1 d-none d-sm-block"></div>
+        </div>
+        {% for row in data %}
+            <div class="row border-bottom">
+                <div class="col-1 d-none d-sm-block">{{ row.user.id }}</div>
+                <div class="col-3">{{ row.user.name }}</div>
+                <div class="col-2 d-none d-sm-block">{{ row.user.username }}</div>
+                <div class="col-3">{{ row.user.email }}</div>
+                <div class="col-2 d-none d-sm-block">{{ row.user.website }}</div>
+                <div class="col-1 d-none d-sm-block">
+                    <a data-toggle="collapse" href="#info-{{ row.user.id }}" role="button" aria-expanded="false" aria-controls="info-{{ row.user.id }}">{{ 'more'|trans({}, 'common') }}</a>
+                </div>
+            </div>
+            <div id="info-{{ row.user.id }}" class="collapse">
+                <div class="row">
+                    <div class="col-6 card card-body">
+                        <div class="font-weight-bold">{{ 'address'|trans({}, 'common') }}:</div>
+                        <div>{{ row.address.street }}</div>
+                        <div>{{ row.address.suite }}</div>
+                        <div>{{ row.address.city }}</div>
+                        <div>{{ row.address.zipcode }}</div>
+                        <div>{{ row.user.phone }}</div>
+                    </div>
+                    <div class="col-6 card card-body">
+                        <div class="font-weight-bold">{{ 'company'|trans({}, 'common') }}:</div>
+                        <div>{{ row.company.name }}</div>
+                        <div>{{ row.company.catchPhrase }}</div>
+                        <div>{{ row.company.bs }}</div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
