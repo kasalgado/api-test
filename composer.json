@@ -1,6 +1,15 @@
 {
-    "type": "project",
-    "license": "proprietary",
+    "name": "kasalgado/app",
+    "type": "test project",
+    "license": "MIT",
+    "description": "test project for Schwarz Diensleistung KG",
+    "authors": [
+        {
+            "name": "Kleber Salgado",
+            "email": "it@kasalgado.de",
+            "homepage": "http://www.kasalgado.de"
+        }
+    ],
     "require": {
         "php": "^7.2.5",
         "ext-ctype": "*",

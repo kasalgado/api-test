@@ -48,34 +48,4 @@ class UserDataTest extends TestCase
         $this->assertEquals($expectedCompanyNameUser1, $users[0]['company']->getName());
         $this->assertEquals($expectedCompanyNameUser2, $users[1]['company']->getName());
     }
-    
-    public function testCanGetDataFromUser()
-    {
-        $expectedName = 'Leanne Graham';
-        $expectedEmail = 'Sincere@april.biz';
-        $user = $this->userData->getMainData(0);
-        
-        $this->assertEquals($expectedName, $user->getName());
-        $this->assertEquals($expectedEmail, $user->getEmail());
-    }
-    
-    public function testCanGetDataFromAddress()
-    {
-        $expectedStreet = 'Kulas Light';
-        $expectedGeo = ['lat' => '-37.3159', 'lng' => '81.1496'];
-        $address = $this->userData->getAddressData(0);
-        
-        $this->assertEquals($expectedStreet, $address->getStreet());
-        $this->assertEquals($expectedGeo, $address->getGeo());
-    }
-    
-    public function testCanGetDataFromCompany()
-    {
-        $expectedName = 'Romaguera-Crona';
-        $expectedBs = 'harness real-time e-markets';
-        $company = $this->userData->getCompanyData(0);
-        
-        $this->assertEquals($expectedName, $company->getName());
-        $this->assertEquals($expectedBs, $company->getBs());
-    }
 }

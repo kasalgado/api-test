@@ -38,7 +38,7 @@ class UserData
         return $this->users;
     }
     
-    public function getMainData(int $index): User
+    private function getMainData(int $index): User
     {
         $userData = $this->provider->getMainData($index);
         
@@ -52,7 +52,7 @@ class UserData
         );
     }
     
-    public function getAddressData(int $index): Address
+    private function getAddressData(int $index): Address
     {
         $addressData = $this->provider->getAddressData($index);
         
@@ -65,7 +65,7 @@ class UserData
         );
     }
     
-    public function getCompanyData(int $index): Company
+    private function getCompanyData(int $index): Company
     {
         $companyData = $this->provider->getCompanyData($index);
         
