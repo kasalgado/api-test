@@ -12,6 +12,9 @@
                 <li>ES</li>
             </ul>
             <p>Jedes Portal hat eine Impressum-Seite (z.B. localhost/de/impressum oder localhost/en/imprint). Unter diesem Link wird nur der Inhalt zur jeweils passenden Sprache ausgegeben. Es soll eine Pflegemöglichkeit geschaffen werden, in welcher das Impressum für jeweils das Portal angelegt bzw. geändert werden kann.</p>
+            <div class="alert alert-warning" role="alert">
+                Es wird die Seite auf deutsch gezeigt. Ändern Sie bitte die Url um die Seite auf eine andere Sprache zu sehen (z.B. /en/legal-notice).
+            </div>
             <a class="btn btn-primary" href="{{ path('_legal_notice', {'language': 'de'}) }}">Zu der Aufgabe</a>
         </div>
     </div>
@@ -26,7 +29,7 @@
         <div class="card-header font-weight-bold">Bonus</div>
         <div class="card-body">
             <p>Die Daten aus Aufgabe 1 können über eine API abgerufen werden.</p>
-            <a class="btn btn-primary" href="{{ path('_api_legal_notice') }}">Zu dem Bonus</a>
+            <a class="btn btn-primary" href="{{ path('_api_legal_notice') }}" target="_blank">Zu dem Bonus</a>
         </div>
     </div>
 {% endblock %}
