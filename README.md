@@ -1,5 +1,5 @@
 # app
-Test application for Schwarz Diensleistung KG
+Test application
 
 After cloning the repository, run the following commands:
 - composer install
