@@ -10,12 +10,7 @@ class Address
     private $zipcode;
     private $geo;
     
-    public static function create(string $street, string $suite, string $city, string $zipcode, array $geo): self
-    {
-        return new self($street, $suite, $city, $zipcode, $geo);
-    }
-    
-    private function __construct($street, string $suite, string $city, string $zipcode, array $geo)
+    public function __construct(string $street, string $suite, string $city, string $zipcode, array $geo)
     {
         $this->street = $street;
         $this->suite = $suite;

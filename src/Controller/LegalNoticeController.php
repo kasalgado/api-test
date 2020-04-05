@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use App\Entity\LegalNotice;
 use App\Form\Type\LegalNoticeType;
@@ -36,6 +37,10 @@ class LegalNoticeController extends AbstractController
     {
         $id = $request->get('id');
         $legal = $this->getDoctrine()->getRepository(LegalNotice::class)->find($id);
+        
+        if (!$legal) {
+            throw new NotFoundHttpException('Id '.$id.' was not found!');
+        }
         
         $form = $this->createForm(LegalNoticeType::class, $legal);
         $form->handleRequest($request);

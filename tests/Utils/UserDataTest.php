@@ -13,8 +13,9 @@ class UserDataTest extends TestCase
     
     public function setUp()
     {
-        $provider = DataProvider::createFromJson(JsonData::getCorrect());
-        $this->userData = UserData::createFromProvider($provider);
+        $provider = new DataProvider();
+        $this->userData = new UserData($provider);
+        $this->userData->provider()->generate(JsonData::getCorrect());
     }
     
     public function testCanGetMainData()
@@ -27,8 +28,9 @@ class UserDataTest extends TestCase
             'phone' => '1-770-736-8031 x56442',
             'website' => 'hildegard.org',
         ];
+        $this->userData->provider()->prepareData(0);
         
-        $this->assertEquals($expected, $this->userData->provider()->getMainData(0));
+        $this->assertEquals($expected, $this->userData->provider()->getMainData());
     }
     
     public function testCanGetAllUsersData()

@@ -1,9 +1,9 @@
 <?php declare (strict_types=1);
 
-namespace App\Tests\Utils;
+namespace App\Tests\Lib;
 
 use PHPUnit\Framework\TestCase;
-use App\Utils\ApiRequest;
+use App\Lib\ApiRequest;
 
 class ApiRequestTest extends TestCase
 {
@@ -11,8 +11,7 @@ class ApiRequestTest extends TestCase
     
     public function setUp()
     {
-        $url = 'https://jsonplaceholder.typicode.com/users';
-        $this->client = ApiRequest::open($url);
+        $this->client = new ApiRequest();
     }
     
     public function testCanGetStatusOk()

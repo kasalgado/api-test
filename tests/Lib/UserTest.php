@@ -14,9 +14,8 @@ class UserTest extends TestCase
         $username = 'Bret';
         $email = 'Sincere@april.biz';
         $phone = '1-770-736-8031 x56442';
-        $website = 'hildegard.org';
-        
-        $user = User::create($id, $name, $username, $email, $phone, $website);
+        $website = 'hildegard.org';        
+        $user = new User($id, $name, $username, $email, $phone, $website);
         
         $this->assertInstanceOf(User::class, $user);
         $this->assertEquals($id, $user->getId());

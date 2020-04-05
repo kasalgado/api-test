@@ -10,30 +10,18 @@ class DataProvider
     private $addressData;
     private $companyData;
 
-    public static function createFromJson(string $json): self
-    {
-        return new self($json);
-    }
-    
-    private function __construct(string $json)
-    {
-        $this->check($json);
-    }
-    
-    private function check(string $json): void
+    public function generate(string $json): void
     {
         try {
             $this->data = json_decode($json, true);
         } catch (\Exception $e) {
             echo $e->getMessage();
-        }        
+        }
     }
     
-    private function prepareData(int $index): void
+    public function prepareData(int $index): void
     {
-        $data = $this->data[$index];
-        
-        foreach ($data as $key => $value) {
+        foreach ($this->data[$index] as $key => $value) {
             if (!is_array($value)) {
                 $this->mainData[$key] = $value;
             } else {
@@ -50,24 +38,18 @@ class DataProvider
         return $this->data;
     }
     
-    public function getMainData(int $index): array
+    public function getMainData(): array
     {
-        $this->prepareData($index);
-        
         return $this->mainData;
     }
     
-    public function getAddressData(int $index): array
+    public function getAddressData(): array
     {
-        $this->prepareData($index);
-        
         return $this->addressData;
     }
     
-    public function getCompanyData(int $index): array
+    public function getCompanyData(): array
     {
-        $this->prepareData($index);
-        
         return $this->companyData;
     }
 }

@@ -1,22 +1,19 @@
 <?php declare (strict_types=1);
 
-namespace App\Utils;
+namespace App\Lib;
 
 use GuzzleHttp;
 
 class ApiRequest
 {
+    const API_URL = 'https://jsonplaceholder.typicode.com/users';
+    
     private $request;
     
-    public static function open(string $url): self
-    {
-        return new self($url);
-    }
-    
-    private function __construct(string $url)
+    public function __construct()
     {
         $client = new GuzzleHttp\Client();
-        $this->request = $client->request('GET', $url);
+        $this->request = $client->request('GET', self::API_URL);
     }
     
     public function getStatus(): int

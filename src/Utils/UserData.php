@@ -12,12 +12,7 @@ class UserData
     private $provider;
     private $users = [];
     
-    public static function createFromProvider(DataProvider $provider): self
-    {
-        return new self($provider);
-    }
-    
-    private function __construct(DataProvider $provider)
+    public function __construct(DataProvider $provider)
     {
         $this->provider = $provider;
     }
@@ -30,19 +25,20 @@ class UserData
     public function getUsers(): array
     {
         foreach ($this->provider->asArray() as $index => $value) {
-            $this->users[$index]['user'] = $this->getMainData($index);
-            $this->users[$index]['address'] = $this->getAddressData($index);
-            $this->users[$index]['company'] = $this->getCompanyData($index);
+            $this->provider->prepareData($index);
+            
+            $this->users[$index]['user'] = $this->getMainData();
+            $this->users[$index]['address'] = $this->getAddressData();
+            $this->users[$index]['company'] = $this->getCompanyData();
         }
         
         return $this->users;
     }
     
-    private function getMainData(int $index): User
+    private function getMainData(): User
     {
-        $userData = $this->provider->getMainData($index);
-        
-        return User::create(
+        $userData = $this->provider->getMainData();
+        $user = new User(
             $userData['id'],
             $userData['name'],
             $userData['username'],
@@ -50,25 +46,33 @@ class UserData
             $userData['phone'],
             $userData['website']
         );
+        
+        return $user;
     }
     
-    private function getAddressData(int $index): Address
+    private function getAddressData(): Address
     {
-        $addressData = $this->provider->getAddressData($index);
-        
-        return Address::create(
+        $addressData = $this->provider->getAddressData();
+        $address = new Address(
             $addressData['street'],
             $addressData['suite'],
             $addressData['city'],
             $addressData['zipcode'],
             $addressData['geo'],
         );
+        
+        return $address;
     }
     
-    private function getCompanyData(int $index): Company
+    private function getCompanyData(): Company
     {
-        $companyData = $this->provider->getCompanyData($index);
+        $companyData = $this->provider->getCompanyData();
+        $company = new Company(
+            $companyData['name'],
+            $companyData['catchPhrase'],
+            $companyData['bs']
+        );
         
-        return Company::create($companyData['name'], $companyData['catchPhrase'], $companyData['bs']);
+        return $company;
     }
 }

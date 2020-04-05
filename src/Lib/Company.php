@@ -8,12 +8,7 @@ class Company
     private $catchPhrase;
     private $bs;
     
-    public static function create(string $name, string $catchPhrase, string $bs): self
-    {
-        return new self($name, $catchPhrase, $bs);
-    }
-    
-    private function __construct($name, string $catchPhrase, string $bs)
+    public function __construct(string $name, string $catchPhrase, string $bs)
     {
         $this->name = $name;
         $this->catchPhrase = $catchPhrase;

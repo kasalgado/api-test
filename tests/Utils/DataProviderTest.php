@@ -8,25 +8,24 @@ use App\Tests\Data\JsonData;
 
 class DataProviderTest extends TestCase
 {
-    public function testCanConvertDataToArray()
+    private $provider;
+    
+    public function setUp()
     {
-        $provider = DataProvider::createFromJson(JsonData::getCorrect());
-        $this->assertIsArray($provider->asArray());
+        $this->provider = new DataProvider();
+        $this->provider->generate(JsonData::getCorrect());
     }
     
-    public function testCanThrowExceptionByWrongData()
+    public function testCanConvertDataToArray()
     {
-        $provider = DataProvider::createFromJson(JsonData::getBroken());
-        $this->expectException('TypeError');
-        $provider->asArray();
+        $this->assertIsArray($this->provider->asArray());
     }
     
     public function testCanFetchValueFromData()
     {
         $expectedName = 'Leanne Graham';
         $expectedStreet = 'Kulas Light';
-        $provider = DataProvider::createFromJson(JsonData::getCorrect());
-        $data = $provider->asArray();
+        $data = $this->provider->asArray();
         
         $this->assertEquals($expectedName, $data[0]['name']);
         $this->assertEquals($expectedStreet, $data[0]['address']['street']);
@@ -42,9 +41,9 @@ class DataProviderTest extends TestCase
             'phone' => '1-770-736-8031 x56442',
             'website' => 'hildegard.org',
         ];
-        $provider = DataProvider::createFromJson(JsonData::getCorrect());
+        $data = $this->provider->prepareData(0);
         
-        $this->assertEquals($expected, $provider->getMainData(0));
+        $this->assertEquals($expected, $this->provider->getMainData());
     }
     
     public function testCanGetAddressData()
@@ -59,8 +58,16 @@ class DataProviderTest extends TestCase
                 'lng' => '81.1496'
             ],
         ];
-        $provider = DataProvider::createFromJson(JsonData::getCorrect());
+        $data = $this->provider->prepareData(0);
         
-        $this->assertEquals($expected, $provider->getAddressData(0));
+        $this->assertEquals($expected, $this->provider->getAddressData());
+    }
+    
+    public function testCanThrowExceptionByWrongData()
+    {
+        $provider = new DataProvider();
+        $provider->generate(JsonData::getBroken());
+        $this->expectException('TypeError');
+        $provider->asArray();
     }
 }

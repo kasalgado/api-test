@@ -11,19 +11,7 @@ class User
     private $phone;
     private $website;
     
-    public static function create(
-        int $id,
-        string $name,
-        string $username,
-        string $email,
-        string $phone,
-        string $website
-    ): self
-    {
-        return new self($id, $name, $username, $email, $phone, $website);
-    }
-    
-    private function __construct(int $id, string $name, string $username, string $email, string $phone, string $website)
+    public function __construct(int $id, string $name, string $username, string $email, string $phone, string $website)
     {
         $this->id = $id;
         $this->name = $name;
