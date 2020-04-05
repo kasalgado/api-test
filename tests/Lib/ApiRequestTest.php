@@ -3,7 +3,7 @@
 namespace App\Tests\Lib;
 
 use PHPUnit\Framework\TestCase;
-use App\Lib\ApiRequest;
+use App\Service\ApiRequest;
 
 class ApiRequestTest extends TestCase
 {

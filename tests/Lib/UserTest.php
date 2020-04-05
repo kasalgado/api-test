@@ -3,7 +3,7 @@
 namespace App\Tests\Lib;
 
 use PHPUnit\Framework\TestCase;
-use App\Lib\User;
+use App\Service\User;
 
 class UserTest extends TestCase
 {

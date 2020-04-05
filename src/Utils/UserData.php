@@ -3,9 +3,9 @@
 namespace App\Utils;
 
 use App\Utils\DataProvider;
-use App\Lib\User;
-use App\Lib\Address;
-use App\Lib\Company;
+use App\Service\User;
+use App\Service\Address;
+use App\Service\Company;
 
 class UserData
 {
