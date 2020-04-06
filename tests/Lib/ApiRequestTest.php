@@ -23,7 +23,9 @@ class ApiRequestTest extends TestCase
     public function testCanGetJsonHeader()
     {
         $expected = 'application/json; charset=utf-8';
-        $this->assertEquals($expected, $this->client->getHeader());
+        $headers = $this->client->getHeaders();
+        
+        $this->assertEquals($expected, $headers['content-type'][0]);
     }
     
     public function testCanCheckBodyIsObject()

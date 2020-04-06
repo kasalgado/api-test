@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use GuzzleHttp;
+use Symfony\Component\HttpClient\HttpClient;
 
 class ApiRequest
 {
@@ -12,7 +12,7 @@ class ApiRequest
     
     public function __construct()
     {
-        $client = new GuzzleHttp\Client();
+        $client = HttpClient::create();
         $this->request = $client->request('GET', self::API_URL);
     }
     
@@ -21,13 +21,13 @@ class ApiRequest
         return $this->request->getStatusCode();
     }
     
-    public function getHeader(): string
+    public function getHeaders(): array
     {
-        return $this->request->getHeader('content-type')[0];
+        return $this->request->getHeaders();
     }
     
     public function getBody(): string
     {
-        return $this->request->getBody()->getContents();
+        return $this->request->getContent();
     }
 }
